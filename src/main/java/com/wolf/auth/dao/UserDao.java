@@ -1,6 +1,6 @@
-package com.wolf.system.dao;
+package com.wolf.auth.dao;
 
-import com.wolf.system.model.User;
+import com.wolf.auth.model.User;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

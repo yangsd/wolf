@@ -1,8 +1,8 @@
-package com.wolf.system.controller;
+package com.wolf.auth.controller;
 
-import com.wolf.system.model.User;
-import com.wolf.system.service.UserService;
-import javassist.NotFoundException;
+import com.wolf.auth.service.UserService;
+import com.wolf.auth.vo.UserVo;
+import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +22,7 @@ public class UserController {
 
     @RequestMapping(value = "/test", method = { RequestMethod.GET })
     public String test(Model model) throws NotFoundException {
-        List<User> userList = userService.findAll();
+        List<UserVo> userList = userService.findAll();
         model.addAttribute("users",userList);
         return "index";
     }

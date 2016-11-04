@@ -1,13 +1,16 @@
 package com.wolf;
 
 import com.wolf.core.service.SqlConfigService;
-import javassist.*;
-import javassist.bytecode.AnnotationsAttribute;
-import javassist.bytecode.ConstPool;
-import javassist.bytecode.MethodInfo;
-import javassist.bytecode.annotation.Annotation;
-import javassist.bytecode.annotation.ArrayMemberValue;
-import javassist.bytecode.annotation.StringMemberValue;
+import org.apache.ibatis.javassist.ClassPool;
+import org.apache.ibatis.javassist.CtClass;
+import org.apache.ibatis.javassist.CtMethod;
+import org.apache.ibatis.javassist.NotFoundException;
+import org.apache.ibatis.javassist.bytecode.AnnotationsAttribute;
+import org.apache.ibatis.javassist.bytecode.ConstPool;
+import org.apache.ibatis.javassist.bytecode.MethodInfo;
+import org.apache.ibatis.javassist.bytecode.annotation.Annotation;
+import org.apache.ibatis.javassist.bytecode.annotation.ArrayMemberValue;
+import org.apache.ibatis.javassist.bytecode.annotation.StringMemberValue;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -28,7 +31,7 @@ public class Test {
     public void ReadTest() throws NotFoundException, ClassNotFoundException {
         ClassPool pool = ClassPool.getDefault();
         //获取要修改的类的所有信息
-        CtClass ct = pool.get("com.wolf.system.mapper.UserMapper");
+        CtClass ct = pool.get("com.wolf.auth.mapper.UserMapper");
         //获取类中的方法
         CtMethod[] cms = ct.getDeclaredMethods();
         //获取第一个方法（因为只有一个方法）

@@ -1,8 +1,8 @@
 package com;
 
 import com.wolf.core.service.SqlConfigService;
-import javassist.CannotCompileException;
-import javassist.NotFoundException;
+import org.apache.ibatis.javassist.CannotCompileException;
+import org.apache.ibatis.javassist.NotFoundException;
 import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -59,15 +59,15 @@ public class SpringBootStart extends SpringBootServletInitializer {
     public static void main(String[] args) {
         logger.info("==============  ***  开始启动系统  ***  ==============");
         ConfigurableApplicationContext ctx = SpringApplication.run(SpringBootStart.class, args);
-        try {
-            getSqlConfigService().init();
-        } catch (NotFoundException e) {
-            e.printStackTrace();
-        } catch (CannotCompileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            getSqlConfigService().init();
+//        } catch (NotFoundException e) {
+//            e.printStackTrace();
+//        } catch (CannotCompileException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         logger.info("==============  ***  系统启动完成  ***  ==============");
     }
 }

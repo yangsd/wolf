@@ -4,13 +4,13 @@ import com.wolf.core.EntityClassLoader;
 import com.wolf.core.enumeration.Dialect;
 import com.wolf.core.mapper.SqlConfigMapper;
 import com.wolf.core.model.SqlConfig;
-import javassist.*;
-import javassist.bytecode.AnnotationsAttribute;
-import javassist.bytecode.ConstPool;
-import javassist.bytecode.MethodInfo;
-import javassist.bytecode.annotation.Annotation;
-import javassist.bytecode.annotation.ArrayMemberValue;
-import javassist.bytecode.annotation.StringMemberValue;
+import org.apache.ibatis.javassist.*;
+import org.apache.ibatis.javassist.bytecode.AnnotationsAttribute;
+import org.apache.ibatis.javassist.bytecode.ConstPool;
+import org.apache.ibatis.javassist.bytecode.MethodInfo;
+import org.apache.ibatis.javassist.bytecode.annotation.Annotation;
+import org.apache.ibatis.javassist.bytecode.annotation.ArrayMemberValue;
+import org.apache.ibatis.javassist.bytecode.annotation.StringMemberValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class SqlConfigService {
     public void init() throws NotFoundException, CannotCompileException, IOException {
         ClassPool pool = ClassPool.getDefault();
         //获取要修改的类的所有信息
-        CtClass ct = pool.get("com.wolf.system.mapper.UserMapper");
+        CtClass ct = pool.get("com.wolf.auth.mapper.UserMapper");
         //获取类中的方法
         CtMethod[] cms = ct.getDeclaredMethods();
         //获取第一个方法
@@ -66,7 +66,7 @@ public class SqlConfigService {
 
         ct.writeFile();
         ct.defrost();
-        EntityClassLoader loader = new EntityClassLoader(com.wolf.system.mapper.UserMapper.class.getClassLoader());
+        EntityClassLoader loader = new EntityClassLoader(com.wolf.auth.mapper.UserMapper.class.getClassLoader());
         ct.toClass(loader , null);
 
         Annotation annotation3 = attribute.getAnnotation("org.apache.ibatis.annotations.Select");

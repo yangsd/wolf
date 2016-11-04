@@ -1,4 +1,6 @@
-package com.wolf.system.model;
+package com.wolf.auth.model;
+
+import java.util.Date;
 
 /**
  * 系统用户
@@ -9,7 +11,7 @@ package com.wolf.system.model;
 
 public class User {
 
-	private Long pk_user;// 主键
+	private Long id;// 主键
 
 	private String loginid;// 登录帐号
 
@@ -17,15 +19,17 @@ public class User {
 
 	private String username;// 用户姓名
 
+	private String mobile;//手机号码
+
+	private String weixinid;//微信号
+
 	private String email;// 邮箱
 
 	private String salt; // 加密密码的盐
 
-	private Long roleid; // 拥有的角色
-
-	private String rolename;// 角色名称
-
 	private Boolean status = Boolean.FALSE;// 状态：默认启用0
+
+	private Date create_time;
 
 	public User() {
 	}
@@ -35,12 +39,12 @@ public class User {
 		this.password = password;
 	}
 
-	public Long getPk_user() {
-		return pk_user;
+	public Long getId() {
+		return id;
 	}
 
-	public void setPk_user(Long pk_user) {
-		this.pk_user = pk_user;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getUsername() {
@@ -71,14 +75,6 @@ public class User {
 		return username + salt;
 	}
 
-	public Long getRoleid() {
-		return roleid;
-	}
-
-	public void setRoleid(Long roleid) {
-		this.roleid = roleid;
-	}
-
 	public Boolean getStatus() {
 		return status;
 	}
@@ -103,12 +99,27 @@ public class User {
 		this.email = email;
 	}
 
-	public String getRolename() {
-		return rolename;
+	public String getMobile() {
+		return mobile;
 	}
 
-	public void setRolename(String rolename) {
-		this.rolename = rolename;
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 
+	public String getWeixinid() {
+		return weixinid;
+	}
+
+	public void setWeixinid(String weixinid) {
+		this.weixinid = weixinid;
+	}
+
+	public Date getCreate_time() {
+		return create_time;
+	}
+
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
+	}
 }
